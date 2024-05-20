@@ -47,3 +47,35 @@ B) s2 == s3
 C) s1 == s3
 D) X.h == s1
 E) None of the above
+
+Q) Given
+int x = -1;
+int y = 0b0000_0000_0000_1010; // line n1
+System.out.println(x | y); // line n2
+
+What is the result?
+A) Compilation fails at line n1
+B) Compilation fails at line n2
+C) 10
+D) 0b1111_1111_1111_1111
+E) -1
+F) Exception at runtime
+
+Q) Given:
+  public static boolean v1() {
+    return true;
+  }
+
+  public static boolean v2() {
+    throw new RuntimeException();
+  }
+
+and:
+      System.out.println(v1() || v2());
+
+What is the result:
+A) Compilation fails
+B) Exception
+C) true
+D) false
+E) true, followed by an exception
