@@ -79,3 +79,114 @@ B) Exception
 C) true
 D) false
 E) true, followed by an exception
+
+Q) Given:
+
+    String s = "Hello";
+    System.out.println(s instanceof String x);
+
+What is the result?
+A) true
+B) false
+C) Exception at runtime
+D) Compilation fails
+
+Q) Given:
+  class Base {
+    void doBaseStuff() { System.out.println("doBaseStuff"); }
+  }
+
+and:
+  class Sub extends Base {
+    void doBaseStuff() { System.out.println("doSubStuff"); }
+    void doOtherStuff() { System.out.println("doOtherStuff"); }
+  }
+
+and:
+    Base b = new Sub();
+    ((Runnable) b).run();
+
+What is the result?
+  A) doSubStuff
+  B) doOtherStuff
+  C) doBaseStuff
+  D) Exception at runtime
+  E) Compilation failure
+
+Q) Given:
+    Object obj = "Hello";
+    boolean answered = false;
+    if (obj instanceof String) {
+      String str = (String)obj;
+      if (str.length() > 3) {
+        System.out.println(str);
+        answered = true;
+      }
+    }
+    if (!answered) System.out.println("Nope");
+
+Which replace the if /instanceof clause to produce the same output?
+A)    System.out.println(obj instanceof String str && str.length() > 3 ? str : "Nope");
+B)    if (obj instanceof String str when str.length() > 3) System.out.println(str);
+      else System.out.println("Nope");
+C)    if (obj instanceof String str if str.length() > 3) System.out.println(str);
+      else System.out.println("Nope");
+D)    System.out.println(obj instanceof String.class str && str.length() > 3 ? str : "Nope");
+E)    if (!(obj instanceof String str) || str.length() <= 3) System.out.println("Nope");
+      else System.out.println(str);
+
+Q) Which print true?
+Iterable<String> is = List.of("a", "b", "c");
+Object obj = is;
+
+  A) System.out.println(is instanceof List);
+  B) System.out.println(obj instanceof List l && l.size() > 2);
+  C) System.out.println(obj instanceof List<String> ls);
+  D) System.out.println(is instanceof Collection<? extends CharSequence> cs);
+  E) System.out.println(is instanceof List<String> ls || ls.size() > 2);
+
+Q) Given:
+    String s = "Hello";
+    switch (s) {
+      case "Hello" ->
+          System.out.print("Bonjour "); // line n1
+          System.out.print("Guten Tag ");
+      default -> System.out.print("Bye");
+    }
+
+Which is true?
+A) The code prints: Bonjour Guten Tag Bye
+B) The code prints: Bonjour Guten Tag
+C) If line n1 is removed the code prints: Guten Tag Bye
+D) If line n1 is removed the code prints: Guten Tag
+E) The code fails to compile
+
+Q) Given:
+    short s = 8;
+    System.out.println(switch (s) { // line n1
+      // line n2
+      default -> "It's something else"; // line n3
+    });
+
+
+Which are true?
+A) Compilation fails at line n1
+B) Compilation fails at line n3
+C) The code runs and prints It's something else
+D) Adding at line n2
+   case 2,4,6,8 -> "Even < 10";
+   gives the output Even < 10
+E) Adding at line n2
+   case 2 -> case 4 -> case 6 -> case 8 -> "Even < 10";
+   gives the output Even < 10
+
+Q) Given:
+  void doStuff(int x, int y) {}         // Method A
+  void doStuff(int x, long y) {}        // Method B
+  void doStuff(long x, int y) {}        // Method C
+  void doStuff(int ... x) {}            // Method D
+  void doStuff(Integer x, Integer y) {} // Method E
+
+  void tryStuff() {
+    doStuff(1, 2);
+  }
