@@ -1,0 +1,49 @@
+Q)
+Which are legal:
+A) var [] x = { 1,2,3 };
+B) var x = new int[]{ 1,2,3 };
+C) var x = 10, y = 100;
+D) var x = true ? "99" : 99;
+E) var var = "var";
+
+Q) Given:
+    String message = """
+        Hello
+            Java 17 World!""";
+    System.out.println(message + "XXX");
+
+What is the result?
+A)
+Hello
+Java 17 World!XXX
+
+B)
+Hello
+    Java 17 World!XXX
+
+C)
+Hello
+Java 17 World!
+XXX
+
+D)
+    Hello
+        Java 17 World!
+XXX
+
+Q)
+Given, separately compiled:
+class X {
+  static String h = "Hel" + "lo";
+}
+
+Which are true?
+  String s1 = "Hello";
+  String s2 = new StringBuilder("Hello").toString();
+  String s3 = s2.intern();
+
+A) s1 == s2
+B) s2 == s3
+C) s1 == s3
+D) X.h == s1
+E) None of the above
