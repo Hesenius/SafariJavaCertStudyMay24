@@ -13,4 +13,6 @@ public class Example {
   void tryStuff() {
     doStuff(1, 2);
   }
+//  Long l = Integer.valueOf(10);
+  Number l = Integer.valueOf(10);
 }
