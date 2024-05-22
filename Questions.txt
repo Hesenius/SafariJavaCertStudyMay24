@@ -509,3 +509,72 @@ A) The code compiles but throws an exception at runtime
 B) A change at line n1 is sufficient to allow successful execution
 C) A change at line n2 is sufficient to allow successful execution
 D) A change at line n3 is sufficient to allow successful execution
+
+Q) Given, rooted on the base of the classpath:
+---file: localization/MyResources.properties
+name=Fred
+-----------------------------------------------
+---file: localization/MyResources_de.properties
+name=Helmut
+-----------------------------------------------
+and:
+
+    Locale.setDefault(Locale.FRENCH);
+    ResourceBundle bundle = PropertyResourceBundle.getBundle(
+        "MyResources");
+    System.out.println("Name is " + bundle.getString("name"));
+
+What is the result?
+A) Name is Helmut
+B) Name is Fred
+C) Name is null
+D) an exception is thrown
+E) compilation fails
+
+Q) Given:
+  public static void main(String[] args) {
+    StringBuilder sb1 = new StringBuilder("Hello");
+    StringBuilder sb2 = sb1;
+    sb1 = null;
+    // here
+    System.out.println("Not here.");
+  }
+
+  Which is true at point "here"?
+  A) sb1 is unreferenced and eligible for GC
+  B) sb1 and sb2 are unreferenced and eligible for GC
+  C) No objects are eligible for GC
+
+Q) Given:
+  static int doStuff(String s) {
+    s = new String("Hello");
+    return s.length();
+  }
+
+  public static void main(String[] args) {
+    int y = doStuff("Hello");
+    // line n1
+  }
+how many String objects are eligible for GC at line n1
+A) 0
+B) 1
+C) 2
+D) 3
+
+Q) Given:
+  static String doStuff(String s) {
+    s = new String("Hello");
+    return s;
+  }
+
+  public static void main(String[] args) {
+    String y = doStuff("Hello");
+    // line n1
+    System.out.println("y is " + y);
+  }
+ how many String objects are eligible for GC at line n1
+A) 0
+B) 1
+C) 2
+D) 3
+
