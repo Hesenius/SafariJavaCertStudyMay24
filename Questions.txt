@@ -439,3 +439,73 @@ B) Exception at runtime
 C) Hello!, P-si: x is 0, C-si: y is 300, P-i: y is 101, P-c: y is 401, C-i x: is 200 Goodbye!
 D) , P-si: x is 0, C-si: y is 300Hello!, P-i: y is 101, P-c: y is 401, C-i x: is 200 Goodbye!
 E) Hello!, P-si: x is 99, C-si: y is 300, P-i: y is 101, P-c: y is 100Goodbye!
+
+Q) Given:
+      ???? (s, t) -> s.length() - t.length();
+
+Which are correct inserted in place of ????
+A) BiFunction<String, String, Integer> f =
+B) BiPredicate<String> f =
+C) Comparator<String> f =
+D) Supplier<String, Integer> f =
+E) BinaryOperator<String> f =
+F) var f =
+
+Q) Given, in a single file X.java:
+interface ArbInter {}
+final class Y implements X {}
+sealed interface X /* point x */{}
+// line n1
+
+Which is/are true?
+A) the code compiles as it stands
+B) the code compiles if the following is added at point x
+   permits Y, Z
+   AND this is added at line n1
+   class Z implements X {}
+C) the code compiles if the following is added at point x
+   permits Y, Z
+   AND this is added at line n1
+   record Z(String name) implements X {}
+D) the code compiles if the following is added at point x
+   permits Y extends ArbInter
+E) the code compiles if the following is added at line n1
+   non-sealed abstract class Z implements X permits Q {}
+   final class Q extends Z {}
+
+Q) Given:
+class Name { // line n1
+  protected String first, last; // line n2
+  // line n3
+  public Name(String first, String last) {
+    this.first = first;
+    this.last = last;
+  }
+  public String toString() {
+    return "[first=" + first + ", last=" + last + "]";
+  }
+}
+class Person extends Name implements Serializable {
+  private String address;
+  public Person(String fName, String lName, String address) {
+    super(fName, lName);
+    this.address = address;
+  }
+  public String toString() {
+    return "Person{" + "name=" + first + ", " + last + ", address=" + address + '}';
+  }
+}
+and:
+    ByteArrayOutputStream baos = new ByteArrayOutputStream(1024);
+    ObjectOutputStream oos = new ObjectOutputStream(baos);
+    Person p = new Person("Algernon", "Montgomery", "In the hangar");
+    oos.writeObject(p);
+    ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+    ObjectInputStream ois = new ObjectInputStream(bais);
+    Object obj = ois.readObject();
+    System.out.println(obj);
+Which are true?
+A) The code compiles but throws an exception at runtime
+B) A change at line n1 is sufficient to allow successful execution
+C) A change at line n2 is sufficient to allow successful execution
+D) A change at line n3 is sufficient to allow successful execution
